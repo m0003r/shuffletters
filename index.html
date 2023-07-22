@@ -2,21 +2,27 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Угадай слова</title>
     <style>
+        body {
+            width: 100vw;
+        }
         h1 {
             text-align: center;
             font-family: sans-serif;
-            font-size: 5em;
+            font-size: 18vw;
+            font-weight: normal;
         }
         #word {
-            font-size: 16em;
-            letter-spacing: 0.3em;
+            font-size: 15vw;
+            letter-spacing: 0.2em;
             font-family: monospace;
             text-align: center;
-            margin: 1em;
+            margin: 20px;
             /** uppercase */
             text-transform: uppercase;
+            word-break: break-all;
         }
         .answer #word {
             color: darkgreen;
@@ -116,7 +122,8 @@ function next_word() {
     for (let i = 0; i < max_shuffle; i++) {
         if (Math.random() < 0.5) {
             let pos1 = rand_int(word3.length);
-            let pos2 = rand_int(word3.length);
+            let pos2;
+            while ((pos2 = rand_int(word3.length)) === pos1) {}
             let arr = word3.split('');
             let tmp = arr[pos1];
             arr[pos1] = arr[pos2];
